@@ -10,7 +10,6 @@ Vue.component('cliente',{
                 idCliente : '',
                 codigo: '',
                 nombre: '',
-                sexo: '',
                 direccion: '',
                 telefono: '',
                 dui: ''
@@ -62,7 +61,6 @@ Vue.component('cliente',{
             this.cliente.idCliente = '';
             this.cliente.codigo = '';
             this.cliente.nombre = '';
-            this.cliente.sexo = '';
             this.cliente.direccion = '';
             this.cliente.telefono = '';
             this.cliente.dui = '';
