@@ -33,11 +33,7 @@
                                 <input title="Ingrese el nombre" v-model="cliente.nombre" pattern="[A-Za-zñÑáéíóúü ]{3,75}" required type="text" class="form-control">
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col col-md-2">sexo:</div>
-                            <div class="col col-md-3">
-                                <input title="Ingrese el sexo" v-model="cliente.sexo" pattern="[A-Za-zñÑáéíóúü ]{3,75}" required type="text" class="form-control">
-                            </div>
+                        
                         </div>
                         <div class="row">
                             <div class="col col-md-2">Direccion:</div>
@@ -84,14 +80,13 @@
                     <table class="table table-dark table-hover">
                         <thead>
                             <tr>
-                                <th colspan="6">
+                                <th colspan="5">
                                     Buscar: <input @keyup="buscandoCliente" v-model="buscar" placeholder="buscar aqui" class="form-control" type="text" >
                                 </th>
                             </tr>
                             <tr>
                                 <th>CODIGO</th>
                                 <th>NOMBRE</th>
-                                <th>SEXO</th>
                                 <th>DIRECCION</th>
                                 <th>TEL</th>
                                 <th>DUI</th>
@@ -102,7 +97,6 @@
                             <tr v-for="cliente in clientes" @click="modificarCliente(cliente)" :key="cliente.idCliente">
                                 <td>{{cliente.codigo}}</td>
                                 <td>{{cliente.nombre}}</td>
-                                <td>{{cliente.sexo}}</td>
                                 <td>{{cliente.direccion}}</td>
                                 <td>{{cliente.telefono}}</td>
                                 <td>{{cliente.dui}}</td>
@@ -136,7 +130,6 @@
                     msg : '',
                     codigo: '',
                     nombre: '',
-                    sexo: '',
                     direccion: '',
                     telefono: '',
                     dui: ''
@@ -166,12 +159,12 @@
                     let sql = '',
                         parametros = [];
                     if(this.cliente.accion=="nuevo"){
-                        sql = 'INSERT INTO clientes (codigo, nombre, sexo, direccion, telefono, dui) VALUES (?,?,?,?,?,?)';
-                        parametros = [this.cliente.codigo, this.cliente.nombre, this.cliente.sexo, this.cliente.direccion, 
+                        sql = 'INSERT INTO clientes (codigo, nombre, direccion, telefono, dui) VALUES (?,?,?,?,?,?)';
+                        parametros = [this.cliente.codigo, this.cliente.nombre, this.cliente.direccion, 
                             this.cliente.telefono, this.cliente.dui];
                     } else if(this.cliente.accion=="modificar"){
-                        sql = 'UPDATE clientes SET codigo=?, nombre=?, sexo=?, direccion=?, telefono=?, dui=? WHERE idCliente=?';
-                        parametros = [this.cliente.codigo, this.cliente.nombre, this.cliente.sexo, this.cliente.direccion, 
+                        sql = 'UPDATE clientes SET codigo=?, nombre=?, direccion=?, telefono=?, dui=? WHERE idCliente=?';
+                        parametros = [this.cliente.codigo, this.cliente.nombre, this.cliente.direccion, 
                             this.cliente.telefono, this.cliente.dui, this.cliente.idCliente];
                     } else if(this.cliente.accion=="eliminar"){
                         sql = 'DELETE FROM clientes WHERE idCliente=?';
@@ -208,7 +201,6 @@
                     this.cliente.msg = '';
                     this.cliente.codigo = '';
                     this.cliente.nombre = '';
-                    this.cliente.sexo = '';
                     this.cliente.direccion = '';
                     this.cliente.telefono = '';
                     this.cliente.dui = '';
