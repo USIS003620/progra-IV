@@ -10,6 +10,7 @@ Vue.component('cliente',{
                 idCliente : '',
                 codigo: '',
                 nombre: '',
+                sexo: '',
                 direccion: '',
                 telefono: '',
                 dui: ''
